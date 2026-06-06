@@ -1,0 +1,74 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-grotesk@700,600,500,400&f[]=general-sans@700,600,500,400&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-solerift-bg: #E3E2DE;
+  --color-solerift-text: #1B0E0D;
+  --color-solerift-red: #C72A09;
+  --color-solerift-neon: #31EF07;
+  --color-solerift-brown: #61220F;
+  
+  --font-clash: 'Clash Grotesk', sans-serif;
+  --font-general: 'General Sans', sans-serif;
+}
+
+body {
+  background-color: var(--color-solerift-bg);
+  color: var(--color-solerift-text);
+  font-family: var(--font-general);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-clash);
+}
+
+/* Custom underline animation for links */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-solerift-neon);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Grayscale image hover effect */
+.img-hover-reveal {
+  filter: grayscale(100%) contrast(1.2);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.img-hover-reveal:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Hide scrollbar for marquee */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::selection {
+  background: var(--color-solerift-neon);
+  color: #1B0E0D;
+}
