@@ -2,6 +2,7 @@
 
 import ProductCard, { Product } from "../ProductCard";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const FEATURED_PRODUCTS: Product[] = [
   {
@@ -16,7 +17,7 @@ const FEATURED_PRODUCTS: Product[] = [
   {
     id: "RIFT-02",
     name: "EMBER",
-    subtitle: "Neon orange & white mid-top",
+    subtitle: "Neon orange mid-top",
     price: 10499,
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop",
     status: "ONLY 3 LEFT",
@@ -25,7 +26,7 @@ const FEATURED_PRODUCTS: Product[] = [
   {
     id: "RIFT-03",
     name: "GHOST",
-    subtitle: "All-white clean silhouette",
+    subtitle: "All-white silhouette",
     price: 9499,
     image: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=1000&auto=format&fit=crop",
     status: "AVAILABLE",
@@ -34,7 +35,7 @@ const FEATURED_PRODUCTS: Product[] = [
 ];
 
 export default function FeaturedDrops() {
-  const [timeLeft, setTimeLeft] = useState(3 * 24 * 60 * 60); // 3 days in seconds
+  const [timeLeft, setTimeLeft] = useState(3 * 24 * 60 * 60);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,48 +53,36 @@ export default function FeaturedDrops() {
   };
 
   return (
-    <section id="drops" className="bg-[#E3E2DE] pb-24">
-      {/* Category Divider Ribbon */}
-      <div className="w-full border-y border-[#D9D9D9] py-2 bg-[#E3E2DE] overflow-hidden">
-        <div className="max-w-screen-2xl mx-auto px-6 flex justify-between items-center whitespace-nowrap">
-          <h2 className="font-display font-bold uppercase text-[10vw] md:text-[8vw] leading-none tracking-tighter text-[#61220F]">
-            THIS WEEK&apos;S DROP
-          </h2>
-          <div className="hidden md:flex flex-col items-end pl-8 border-l border-[#D9D9D9]">
-            <span className="font-mono text-xs uppercase mb-1">Ends In</span>
-            <span className="font-mono font-bold text-2xl text-[#C72A09]">{formatTime(timeLeft)}</span>
+    <section id="drops" className="bg-[var(--color-solerift-white)] pt-32 pb-32">
+      <div className="max-w-screen-2xl mx-auto px-8">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-[12vw] md:text-9xl leading-[0.8] text-[var(--color-solerift-navy)] uppercase"
+          >
+            THIS WEEK&apos;S<br/>DROP
+          </motion.h2>
+          <div className="flex flex-col items-start md:items-end">
+            <span className="font-sans text-[10px] uppercase tracking-widest text-[var(--color-solerift-taupe)] mb-2 font-semibold">Ends In</span>
+            <span className="font-mono text-2xl text-[var(--color-solerift-taupe)]">{formatTime(timeLeft)}</span>
           </div>
         </div>
-      </div>
-      
-      {/* Mobile Timer */}
-      <div className="md:hidden flex justify-between items-center px-6 py-4 border-b border-[#D9D9D9]">
-        <span className="font-mono text-xs uppercase">Ends In</span>
-        <span className="font-mono font-bold text-xl text-[#C72A09]">{formatTime(timeLeft)}</span>
-      </div>
 
-      {/* Asymmetric Product Grid */}
-      <div className="max-w-screen-2xl mx-auto px-6 mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-          {/* Product A - 7 columns */}
-          <div className="col-span-1 md:col-span-7">
-            <ProductCard product={FEATURED_PRODUCTS[0]} />
-          </div>
-
-          {/* Product B - 5 columns, offset top */}
-          <div className="col-span-1 md:col-span-5 md:mt-32">
-            <ProductCard product={FEATURED_PRODUCTS[1]} />
-          </div>
-
-          {/* Product C - full width */}
-          <div className="col-span-1 md:col-span-12 mt-12 md:mt-24">
-            <div className="w-full aspect-[16/9] md:aspect-[21/9]">
-              <ProductCard 
-                product={FEATURED_PRODUCTS[2]} 
-                className="h-full w-full [&>div:first-child]:aspect-auto [&>div:first-child]:h-[60vh] [&>div:first-child]:md:h-[500px]" 
-              />
-            </div>
-          </div>
+        {/* Asymmetric Masonry Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+          {FEATURED_PRODUCTS.map((product, index) => (
+            <motion.div 
+              key={product.id}
+              className={`${index % 2 !== 0 ? 'md:mt-32' : ''} ${index === 2 ? 'md:col-span-2 md:w-1/2 md:mx-auto' : ''}`}
+            >
+              <ProductCard product={product} />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

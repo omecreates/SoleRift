@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SOLERIFT 🔥
+> Born Underground. Built Different.
 
-## Getting Started
+A modern brutalist streetwear shoe brand website built as a creative
+web development project. Inspired by hype drop culture — think Supreme,
+Off-White, and underground sneaker releases.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+[View Site](#) <!-- paste your deployed link here -->
+
+---
+
+## 📸 Preview
+<!-- drop your screenshots here after building -->
+
+---
+
+## ✨ Features
+
+- Brutalist design system — raw typography, noise texture, neon accents
+- Live countdown timer for weekly drops
+- Interactive product grid with filters (All / Low-Top / Mid-Top / Collab)
+- Add to Cart with live navbar count
+- Grayscale image hover with color reveal
+- Neon green QUICK VIEW badge on product hover
+- Infinite scrolling marquee in About section
+- Fully responsive — mobile + desktop
+- Smooth scroll with sticky navbar
+
+---
+
+## 🛠️ Tech Stack
+
+- Next.js
+- Tailwind CSS
+- Framer Motion
+- Google Fonts (Clash Grotesk)
+
+---
+
+## 🎨 Design System
+
+| Token        | Value     |
+|--------------|-----------|
+| Background   | `#E3E2DE` |
+| Primary Text | `#1B0E0D` |
+| Accent Red   | `#C72A09` |
+| Neon Green   | `#31EF07` |
+| Deep Brown   | `#61220F` |
+
+Noise texture overlay: SVG fractalNoise at 0.08 opacity across all sections.
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+git clone https://github.com/omecreates/solerift
+cd solerift
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
+solerift/
+├── app/
+│   ├── page.tsx          # Main landing page
+│   ├── layout.tsx        # Root layout + noise overlay
+│   └── globals.css       # Design tokens + base styles
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── Manifesto.tsx
+│   ├── DropsSection.tsx
+│   ├── Collection.tsx
+│   ├── About.tsx
+│   ├── Contact.tsx
+│   └── Footer.tsx
+└── public/
+└── images/
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📌 Pages
 
-To learn more about Next.js, take a look at the following resources:
+| Section     | Description                              |
+|-------------|------------------------------------------|
+| Hero        | Full screen split-indented headline      |
+| Manifesto   | Brand story + stat blocks                |
+| Drops       | Featured products + countdown timer      |
+| Collection  | Filterable product grid                  |
+| About       | Brand values + scrolling marquee         |
+| Contact     | Newsletter signup + socials              |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🙋 Author
 
-## Deploy on Vercel
+**PD Shahid Ali** — ECSE Student @ VIT Chennai  
+GitHub: [@omecreates](https://github.com/omecreates)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+MIT — free to use and modify.

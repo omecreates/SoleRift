@@ -21,11 +21,11 @@ export default function ProductCard({ product, className = "" }: { product: Prod
   const getStatusBadge = () => {
     switch (product.status) {
       case "SOLD OUT":
-        return <span className="bg-[#C72A09] text-white px-2 py-1 text-[10px] font-bold uppercase z-10 absolute top-4 right-4">SOLD OUT</span>;
+        return <span className="bg-[var(--color-solerift-navy)] text-[var(--color-solerift-white)] px-3 py-1 text-[10px] font-sans font-bold uppercase z-20 absolute top-4 right-4">SOLD OUT</span>;
       case "ONLY 3 LEFT":
-        return <span className="bg-[#1B0E0D] text-white px-2 py-1 text-[10px] font-bold uppercase z-10 absolute top-4 right-4 border border-[#D9D9D9]">ONLY 3 LEFT</span>;
+        return <span className="bg-[var(--color-solerift-white)] text-[var(--color-solerift-navy)] px-3 py-1 text-[10px] font-sans font-bold uppercase z-20 absolute top-4 right-4 border-premium">ONLY 3 LEFT</span>;
       case "COLLAB DROP":
-        return <span className="bg-[#31EF07] text-[#1B0E0D] px-2 py-1 text-[10px] font-bold uppercase z-10 absolute top-4 right-4">COLLAB DROP</span>;
+        return <span className="bg-[var(--color-solerift-sage)] text-[var(--color-solerift-navy)] px-3 py-1 text-[10px] font-sans font-bold uppercase z-20 absolute top-4 right-4">COLLAB DROP</span>;
       default:
         return null;
     }
@@ -41,43 +41,52 @@ export default function ProductCard({ product, className = "" }: { product: Prod
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.8 }}
     >
       {/* Image Container */}
-      <div className="relative w-full overflow-hidden bg-[#D9D9D9] aspect-[4/5] md:aspect-auto">
+      <div className="relative w-full overflow-hidden bg-[var(--color-solerift-charcoal)] aspect-[3/4]">
         {getStatusBadge()}
         
-        {/* Placeholder image (using a solid block + text for demo, imagine an actual shoe image) */}
+        {/* Navy Overlay on hover */}
         <div 
-          className="w-full h-full min-h-[300px] flex items-center justify-center img-hover-reveal relative transition-all duration-500 bg-center bg-cover bg-no-repeat"
+          className="absolute inset-0 bg-[var(--color-solerift-navy)] z-10 transition-opacity duration-500 pointer-events-none"
+          style={{ opacity: isHovered ? 0.6 : 0 }}
+        />
+
+        <div 
+          className="w-full h-full min-h-[300px] flex items-center justify-center img-hover-reveal relative bg-center bg-cover bg-no-repeat"
           style={{ 
             backgroundImage: `url(${product.image})`,
-            backgroundColor: isHovered ? '#1B0E0D' : '#111' 
+            transform: isHovered ? 'scale(1.1)' : 'scale(1)'
           }}
         >
           {!product.image && (
-             <span className="font-display text-4xl text-white/20 opacity-50 font-bold uppercase rotate-[-10deg] tracking-tighter">
+             <span className="font-display text-4xl text-[var(--color-solerift-white)] opacity-20 rotate-[-10deg] tracking-tighter">
                {product.id}
              </span>
           )}
         </div>
 
-        {/* Quick View Badge */}
+        {/* Circular View Badge */}
         <div 
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#31EF07] text-[#1B0E0D] px-4 py-2 text-[10px] font-bold uppercase z-20 pointer-events-none transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-[var(--color-solerift-white)] text-[var(--color-solerift-navy)] flex items-center justify-center z-20 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ 
+            opacity: isHovered ? 1 : 0,
+            transform: `translate(-50%, -50%) scale(${isHovered ? 1 : 0.8})`
+          }}
         >
-          QUICK VIEW
+          <span className="font-display text-sm tracking-widest mt-1">VIEW</span>
         </div>
       </div>
 
       {/* Product Details */}
-      <div className="pt-4 flex flex-col justify-between border-b-2 border-transparent group-hover:border-[#C72A09] transition-colors duration-300 pb-2">
+      <div className="pt-6 flex flex-col justify-between">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="font-display font-bold uppercase text-lg leading-tight tracking-tight">{product.name}</h3>
-            <p className="font-mono text-[10px] text-gray-500 uppercase mt-1">{product.subtitle}</p>
+            <h3 className="font-display text-2xl leading-none text-[var(--color-solerift-navy)] dark:text-[var(--color-solerift-white)]">{product.name}</h3>
+            <p className="font-sans text-[11px] text-[var(--color-solerift-taupe)] uppercase mt-2 tracking-wide font-medium">{product.subtitle}</p>
           </div>
-          <span className="font-mono text-sm">₹{product.price.toLocaleString("en-IN")}</span>
+          <span className="font-sans text-sm font-semibold text-[var(--color-solerift-taupe)]">₹{product.price.toLocaleString("en-IN")}</span>
         </div>
         
         <button 
@@ -86,10 +95,10 @@ export default function ProductCard({ product, className = "" }: { product: Prod
             if (!isSoldOut) addToCart();
           }}
           disabled={isSoldOut}
-          className={`mt-4 w-full py-3 font-bold uppercase text-xs tracking-wider transition-colors ${
+          className={`mt-6 w-full py-4 font-sans font-bold uppercase text-[10px] tracking-widest transition-colors border-premium ${
             isSoldOut 
-              ? "bg-[#D9D9D9] text-gray-500 cursor-not-allowed" 
-              : "bg-[#1B0E0D] text-[#E3E2DE] hover:bg-[#31EF07] hover:text-[#1B0E0D]"
+              ? "bg-transparent text-[var(--color-solerift-taupe)] cursor-not-allowed border-[var(--color-solerift-taupe)]" 
+              : "bg-transparent text-[var(--color-solerift-navy)] dark:text-[var(--color-solerift-white)] border-[var(--color-solerift-navy)] dark:border-[var(--color-solerift-white)] hover:bg-[var(--color-solerift-navy)] dark:hover:bg-[var(--color-solerift-white)] hover:text-[var(--color-solerift-white)] dark:hover:text-[var(--color-solerift-navy)]"
           }`}
         >
           {isSoldOut ? "NOTIFY ME" : "ADD TO CART"}

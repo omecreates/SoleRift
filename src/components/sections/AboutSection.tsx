@@ -4,57 +4,53 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#E3E2DE] pt-12 pb-0 overflow-hidden">
-      {/* Category Divider */}
-      <div className="w-full border-y border-[#D9D9D9] py-2 bg-[#E3E2DE] mb-16">
-        <div className="max-w-screen-2xl mx-auto px-6">
-          <h2 className="font-display font-bold uppercase text-[10vw] md:text-[8vw] leading-none tracking-tighter text-[#61220F]">
-            ABOUT
-          </h2>
-        </div>
-      </div>
-
-      <div className="max-w-screen-2xl mx-auto px-6 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <section className="bg-[#fafafa] pt-32 pb-0 overflow-hidden text-[var(--color-solerift-navy)]">
+      <div className="max-w-screen-2xl mx-auto px-8 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+          
           {/* Left Column */}
-          <div className="font-mono text-sm uppercase leading-relaxed text-[#1B0E0D]/80">
-            <p className="mb-6">
-              SOLERIFT IS NOT JUST ANOTHER SNEAKER BRAND. WE ARE A RESPONSE TO THE MASS-PRODUCED, OVER-HYPE CULTURE THAT HAS DILUTED THE ESSENCE OF STREETWEAR.
-            </p>
-            <p>
-              EVERY SILHOUETTE IS DESIGNED WITH INTENT. EVERY MATERIAL SOURCED WITH PURPOSE. WE PRODUCE IN LIMITED BATCHES BECAUSE WE BELIEVE IN EXCLUSIVITY THAT MATTERS, NOT MANUFACTURED SCARCITY.
-            </p>
+          <div className="col-span-1 md:col-span-4">
+            <h3 className="font-sans text-[10px] uppercase tracking-widest text-[var(--color-solerift-taupe)] mb-12 font-bold">
+              THE BRAND
+            </h3>
+            
+            <ul className="space-y-6 font-sans text-xs uppercase tracking-widest font-semibold text-[var(--color-solerift-navy)]">
+              {['Born Independent', 'No Restocks Ever', 'Limited Drops Only', '100% Underground'].map((item) => (
+                <li key={item} className="flex items-center group">
+                  <span className="inline-block h-[1px] w-10 bg-[var(--color-solerift-navy)] mr-6 transition-all duration-500 group-hover:w-16"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Right Column (Stats) */}
-          <div className="border-l border-[#D9D9D9] pl-8 flex flex-col justify-center">
-            <div className="mb-8">
-              <h4 className="font-display font-bold text-2xl text-[#1B0E0D] uppercase mb-2">Independent</h4>
-              <p className="font-mono text-xs uppercase text-[#1B0E0D]/60">NO CORPORATE BACKING. PURE VISION.</p>
-            </div>
-            <div className="mb-8">
-              <h4 className="font-display font-bold text-2xl text-[#1B0E0D] uppercase mb-2">Sustainable Scarcity</h4>
-              <p className="font-mono text-xs uppercase text-[#1B0E0D]/60">WE MAKE EXACTLY WHAT WE SELL. ZERO WASTE.</p>
-            </div>
-            <div>
-              <h4 className="font-display font-bold text-2xl text-[#1B0E0D] uppercase mb-2">Anti-Resell</h4>
-              <p className="font-mono text-xs uppercase text-[#1B0E0D]/60">OUR SHOES ARE MEANT TO BE WORN, NOT HOARDED.</p>
-            </div>
+          {/* Right Column (Heading) */}
+          <div className="col-span-1 md:col-span-8 flex items-center">
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display text-[10vw] md:text-8xl leading-[0.9] text-[var(--color-solerift-navy)] font-light"
+            >
+              WE DON&apos;T FOLLOW TRENDS.<br/>
+              WE <span className="italic text-[var(--color-solerift-taupe)]">BURY</span> THEM.
+            </motion.h2>
           </div>
         </div>
       </div>
 
       {/* Infinite Scrolling Marquee */}
-      <div className="w-full border-y border-[#D9D9D9] py-6 bg-[#1B0E0D] overflow-hidden whitespace-nowrap flex relative">
+      <div className="w-full bg-[var(--color-solerift-navy)] py-6 overflow-hidden whitespace-nowrap flex relative border-y border-[var(--color-solerift-white)] border-opacity-10">
         <motion.div 
-          className="flex font-display font-bold text-4xl md:text-6xl uppercase tracking-widest text-[#C72A09]"
+          className="flex font-display text-4xl md:text-6xl text-[var(--color-solerift-taupe)]"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ ease: "linear", duration: 15, repeat: Infinity }}
         >
-          <span className="mx-4">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
-          <span className="mx-4">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
-          <span className="mx-4">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
-          <span className="mx-4">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
+          <span className="mx-8">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
+          <span className="mx-8">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
+          <span className="mx-8">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
+          <span className="mx-8">SOLERIFT &middot; BORN UNDERGROUND &middot; NO RESTOCKS &middot; STAY RAW &middot; BUILT DIFFERENT &middot; </span>
         </motion.div>
       </div>
     </section>

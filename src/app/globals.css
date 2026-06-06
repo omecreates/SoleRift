@@ -1,26 +1,32 @@
-@import url('https://api.fontshare.com/v2/css?f[]=clash-grotesk@700,600,500,400&f[]=general-sans@700,600,500,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  --color-solerift-bg: #E3E2DE;
-  --color-solerift-text: #1B0E0D;
-  --color-solerift-red: #C72A09;
-  --color-solerift-neon: #31EF07;
-  --color-solerift-brown: #61220F;
+  --color-solerift-navy: #171e19;
+  --color-solerift-sage: #b7c6c2;
+  --color-solerift-white: #ffffff;
+  --color-solerift-taupe: #9f8d8b;
+  --color-solerift-beige: #d7c5b2;
+  --color-solerift-cyan: #d5f4f9;
+  --color-solerift-soft-blue: #bbe2f5;
+  --color-solerift-charcoal: #302b2f;
   
-  --font-clash: 'Clash Grotesk', sans-serif;
-  --font-general: 'General Sans', sans-serif;
+  --font-anton: 'Anton', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-  background-color: var(--color-solerift-bg);
-  color: var(--color-solerift-text);
-  font-family: var(--font-general);
+  background-color: var(--color-solerift-navy);
+  color: var(--color-solerift-white);
+  font-family: var(--font-jakarta);
   overflow-x: hidden;
+  cursor: crosshair;
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--font-clash);
+  font-family: var(--font-anton);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
 }
 
 /* Custom underline animation for links */
@@ -35,10 +41,10 @@ h1, h2, h3, h4, h5, h6, .font-display {
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 2px;
+  height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: var(--color-solerift-neon);
+  background-color: currentColor;
   transform-origin: bottom right;
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -48,15 +54,10 @@ h1, h2, h3, h4, h5, h6, .font-display {
   transform-origin: bottom left;
 }
 
-/* Grayscale image hover effect */
+/* Grayscale image hover effect (NEW Premium Dark Style) */
 .img-hover-reveal {
-  filter: grayscale(100%) contrast(1.2);
-  transition: filter 0.4s ease, transform 0.4s ease;
-}
-
-.img-hover-reveal:hover {
-  filter: grayscale(0%);
-  transform: scale(1.05);
+  filter: grayscale(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
 /* Hide scrollbar for marquee */
@@ -69,6 +70,20 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 ::selection {
-  background: var(--color-solerift-neon);
-  color: #1B0E0D;
+  background: var(--color-solerift-sage);
+  color: var(--color-solerift-navy);
+}
+
+/* 1px global border utility */
+.border-premium {
+  border: 1px solid var(--color-solerift-white);
+}
+
+.border-premium-sage {
+  border: 1px solid var(--color-solerift-sage);
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-solerift-sage);
 }

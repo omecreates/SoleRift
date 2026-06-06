@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import NoiseOverlay from "@/components/NoiseOverlay";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
@@ -17,8 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <NoiseOverlay />
+      <body className="antialiased bg-[var(--color-solerift-navy)]">
         <CartProvider>
           <Navigation />
           <main className="relative z-10 flex flex-col min-h-screen">
